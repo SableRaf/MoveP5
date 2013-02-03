@@ -14,21 +14,23 @@ void setup() {
 
 void draw() {
   for(int i=0; i<moveCount; i++) { // Loop through all connected controllers
-    move = moveManager.getController(i); // Grab this controller
-    if (move.isMovePressedEvent()) {
+    move = moveManager.getController(i); // Grab each controller
+    
+    if (move.isMovePressedEvent()) { // What happens when I press the MOVE button?
       move.set_leds(0, 150, 255);
       move.set_rumble(255);
     }
       
-    if (move.isMoveReleasedEvent()) {
+    if (move.isMoveReleasedEvent()) { // What happens when I release the MOVE button?
       move.set_leds(0, 0, 0);
       move.set_rumble(0);
     }
+    
   }
   moveManager.update(); // Read new input and update actuators (leds & rumble) for all controllers
 }
 
 void stop() {
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
-  super.stop();          // Whatever Processing usually does at shutdown
+  super.stop();           // Whatever Processing usually does at shutdown
 }
