@@ -30,7 +30,7 @@ void draw() {
   moveManager.update(); // Read new input and update actuators (leds & rumble) for all controllers
 }
 
-void stop() {
+void exit() {
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
-  super.stop();           // Whatever Processing usually does at shutdown
+  super.exit();           // Whatever Processing usually does at shutdown
 }
