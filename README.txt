@@ -8,9 +8,21 @@ WHY?
 ----
 The standard psmove library is a binding of the PS Move API by Thomas Perl (http://thp.io/2010/psmove/) that gets automatically compiled from the original C code using SWIG. It works great but I wanted to make it more Processing-friendly and abstract the connection to the controllers.
 
-It is a work in progress and any feedback is welcome. Feel free to write your comments in the Issues section.
+For example, the following code\u2026 
+
+if ((moveButtons & Button.SELECT.swigValue()) != 0)
+      move.set_leds(0,150,255);
+
+\u2026 can be replaced by this:
+
+if (move.isSelectPressedEvent())
+  move.set_leds(0,150,255);
+
+
+This is a work in progress and any feedback is welcome. Feel free to write your comments in the Issues section.
 
 You can read about the functions available in the original Processing lib here: http://goo.gl/hyfQf
+
 
 
 TO DO:
