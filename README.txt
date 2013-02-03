@@ -4,6 +4,9 @@ MoveP5
 Prototype for an extended Processing PS Move lib based on the PS Move API
 By Raphael de Courville (Twitter: @sableRaph)
 
+
+
+
 WHY?
 ----
 The standard psmove library is a binding of the PS Move API by Thomas Perl (http://thp.io/2010/psmove/) that gets automatically compiled from the original C code using SWIG. It works great but I wanted to make it more Processing-friendly and abstract the connection to the controllers.
@@ -53,3 +56,9 @@ COMPATIBILITY
 -------------
 
 So far, the psmove lib works on MacOS 10.7.5 only. It will hopefully also be available for Linux and Windows eventually.
+
+
+MORE INFORMATION
+----------------
+
+License: Simplified BSD-style license (see COPYING)
