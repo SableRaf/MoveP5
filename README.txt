@@ -10,8 +10,14 @@ The standard psmove library is a binding of the PS Move API by Thomas Perl (http
 
 For example, the following code...
 
-if ((moveButtons & Button.SELECT.swigValue()) != 0)
-      move.set_leds(0,150,255);
+long [] pressed = {0};
+long [] released = {0};
+PSMove.get_button_events(pressed, released);
+while (PSMove.poll() != 0) {
+  if ((pressed[0] & Button.Btn_SELECT.swigValue()) != 0) {
+        move.set_leds(0,150,255);
+  }
+}
 
 ... can be replaced by this:
 
