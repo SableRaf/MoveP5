@@ -6,8 +6,9 @@ class MoveButton {
   PVector analog; // For analog sticks (navigation controller only)
   
   // We store multiple catchers for the event in case we need to make 
-  // several queries (the event catcher is set to false after the query). 
-  // Do do so, we can use isPressedEvent(i) where i is the id of the catcher.
+  // several queries; the event catcher is set to false after the query 
+  // so we can only use each event catcher once. To do so, we can use 
+  // isPressedEvent(i) where i is the id of the catcher.
   boolean[] pressedEvents;
   boolean[] releasedEvents;
 
@@ -78,17 +79,6 @@ class MoveButton {
   void setValue(int _val) { 
     previousValue = value;
     value = _val;
-    
-    if(value>0) {
-      isPressed = true;
-      if (previousValue == 0) // Catch trigger presses
-        eventPress();
-    }
-    else if(previousValue>0) { // Catch trigger releases
-      eventRelease();
-      isPressed = false;
-    }
-    else isPressed = false;
   }
   
   int getValue() {    
