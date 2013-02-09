@@ -7,8 +7,9 @@ MoveController move;
 int moveCount; 
 
 void setup() {
-  moveManager = new MoveManager(1);               // Initialise move support (pass 1 to enable debug messages)
-  moveManager.stream(false);                      // Send the data via OSC? (Needs bug fixing. Don't use yet.)
+  //frameRate(25);
+  moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
+  moveManager.stream(this, 12000, 12000);        // Send the data via OSC (sketch instance, listening port, sending port)
   moveCount = moveManager.get_controller_count(); // Number of connected controllers
 }
 
@@ -42,3 +43,4 @@ void exit() {
   moveManager.shutdown(); // We clean after ourselves (stop rumble and lights off)
   super.exit();           // Whatever Processing usually does at shutdown
 }
+  

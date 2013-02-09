@@ -5,8 +5,6 @@ Prototype for an extended Processing PS Move lib based on the PS Move API
 By Raphael de Courville (Twitter: @sableRaph)
 
 
-
-
 WHY?
 ----
 The standard psmove library is a binding of the PS Move API by Thomas Perl (http://thp.io/2010/psmove/) that gets automatically compiled from the original C code using SWIG. It works great but I wanted to make it more Processing-friendly and abstract the connection to the controllers.
@@ -37,11 +35,10 @@ You can read about the functions available in the original Processing lib here: 
 TO DO:
 ------
 
-- Option to send the data via OSC
 - Provide a GUI to monitor the controllers
 - Add support for camera tracking and sensor fusion
 - Build into a real Processing library
-- Documentation
+- Proper documentation
 
 
 HOW TO GET YOUR MOVE CONTROLLER TO WORK ON YOUR (MacOS) COMPUTER

@@ -143,41 +143,33 @@ class MoveController extends PSMove {
     else pressed = 1.f;
     readings.put("buttons/ps", pressed);
     
+    /*
+    float pressedEvent = 1.f;
     
-    float pressedEvent = 0.f;
+    if( isMovePressedEvent() ) 
+      readings.put("buttons/move/p", pressedEvent);
     
-    if( !isMovePressedEvent() ) pressedEvent = 0.f; // Boolean to floats (0.f = false, 1.f = true)
-    else pressedEvent = 1.f;
-    readings.put("buttons/move/z", pressedEvent);
+    if( isSquarePressedEvent() )
+      readings.put("buttons/square/p", pressedEvent);
     
-    if( !isSquarePressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/square/z", pressedEvent);
+    if( isTrianglePressedEvent() )
+      readings.put("buttons/triangle/p", pressedEvent);
     
-    if( !isTrianglePressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/triangle/z", pressedEvent);
+    if( isCrossPressedEvent() )
+      readings.put("buttons/cross/p", pressedEvent);
     
-    if( !isCrossPressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/cross/z", pressedEvent);
+    if( isCirclePressedEvent() )
+      readings.put("buttons/circle/p", pressedEvent);
     
-    if( !isCirclePressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/circle/z", pressedEvent);
+    if( isStartPressedEvent() )
+      readings.put("buttons/start/p", pressedEvent);
     
-    if( !isStartPressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/start/z", pressedEvent);
+    if( isSelectPressedEvent() )
+      readings.put("buttons/select/p", pressedEvent);
     
-    if( !isSelectPressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/select/z", pressedEvent);
-    
-    if( !isPsPressedEvent() ) pressedEvent = 0.f;
-    else pressedEvent = 1.f;
-    readings.put("buttons/ps/z", pressedEvent);
-    
+    if( isPsPressedEvent() )
+      readings.put("buttons/ps/p", pressedEvent);
+   */
     return readings;
   }
 

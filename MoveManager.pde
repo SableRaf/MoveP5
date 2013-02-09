@@ -7,7 +7,7 @@ class MoveManager {
   
   private boolean debug = false; // Print debug messages?
   
-  private boolean isStreaming = false; // Are we sending the move data to a remote machine? (via OSC)
+  private boolean isStreaming = false; // Are we sending the move data to a remote machine? (Default is false)
   OscManager oscManager;
   
   // This is the list where we will store the connected 
@@ -38,14 +38,7 @@ class MoveManager {
     update();
   }
   
-  private void init() {
-    
-    // Are we sending the data via OSC?
-    if(isStreaming) {
-      oscManager = new OscManager();
-      oscManager.debug(debug); // Do we print debug messages?
-    }
-    
+  private void init() {    
     if(debug) println("Looking for controllers...");
     if(debug) println("");
     
@@ -133,16 +126,17 @@ class MoveManager {
   // Pass move readings to the OSC module for parsing & sending
   protected void sendData() {
     // Create all the messages
-    for(int i=0; i < ordered_controllers.size(); i++) { // For each connected move
-      MoveController move = ordered_controllers.get(i);
-      String serial = move.get_serial();
-      HashMap data  = move.getData(); // Get all the readings from the controller (sensors & button presses)
-      if(null != oscManager)
+    if(null != oscManager) {
+      for(int i=0; i < ordered_controllers.size(); i++) { // For each connected move
+        MoveController move = ordered_controllers.get(i);
+        String serial = move.get_serial();
+        HashMap data  = move.getData(); // Get all the readings from the controller (sensors & button presses)
         oscManager.createBundle(i,serial,data); // createBundle() will parse the data for the current controller, create the message then add it to the bundle
-      else if(debug) 
-        println("Error in MoveManager.sendData(): oscManager was not instanciated");
+      }
+      oscManager.sendBundle(); // request to send the current bundle
     }
-    oscManager.sendBundle(); // request to send the current bundle
+    else if(debug) 
+      println("Error in MoveManager.sendData(): oscManager was not instanciated");
   }
   
    // Print debug messages?
@@ -155,8 +149,12 @@ class MoveManager {
     oscManager.debug(b);
   }
   
-  public void stream(boolean b) {
-    isStreaming = b;
+  public void stream(Object sketch, int listeningPort, int sendingPort) {
+    isStreaming = true;
+    
+    if(debug) println("\nSetting up OSC communication...");
+    oscManager = new OscManager(sketch, listeningPort, sendingPort); // Instanciate the OSC object
+    oscManager.debug(debug);       // Do we print debug messages?
   }
   
   public void printAllControllers() { 
