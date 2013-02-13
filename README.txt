@@ -14,11 +14,10 @@ For example, the following code...
 long [] pressed = {0};
 long [] released = {0};
 PSMove.get_button_events(pressed, released);
-while (PSMove.poll() != 0) {
-  if ((pressed[0] & Button.Btn_SELECT.swigValue()) != 0) {
-        move.set_leds(0,150,255);
-  }
-}
+while (PSMove.poll() != 0) {}
+if ((pressed[0] & Button.Btn_SELECT.swigValue()) != 0)
+  move.set_leds(0,150,255);
+
 
 ... can be replaced by this:
 
