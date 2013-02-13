@@ -123,6 +123,16 @@ class MoveManager {
     }
   }
   
+  // Activate sensor fusion for all controllers
+  public void enable_orientation() {
+    if(!controllers.isEmpty()) { // Do we actually have controllers to enable?
+      for (String id: controllers.keySet()) {
+        MoveController move = controllers.get(id);     // Give me the controller with that MAC address
+        move.enable_orientation();
+      }
+    }
+  }
+  
   // Pass move readings to the OSC module for parsing & sending
   protected void sendData() {
     // Create all the messages

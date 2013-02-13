@@ -10,6 +10,7 @@ void setup() {
   //frameRate(25);
   moveManager = new MoveManager(1);              // Enable move support (pass 1 to activate debug messages)
   moveManager.stream(this, 12000, 12000);        // Send the data via OSC (sketch instance, listening port, sending port)
+  moveManager.enable_orientation();              // Activate sensor fusion for all controllers
   moveCount = moveManager.get_controller_count(); // Number of connected controllers
 }
 
@@ -28,6 +29,10 @@ void draw() {
     if (move.isMoveReleasedEvent()) { // What happens them moment I release the MOVE button?
       move.set_leds(0, 0, 0); // Leds off
       move.set_rumble(0); // Vibration off
+    }
+    
+    if (move.isSelectPressedEvent()) {
+      move.reset_orientation(); // Set the orientation quaternions to their start values [1, 0, 0, 0]
     }
     
   }
