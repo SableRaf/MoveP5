@@ -4,9 +4,9 @@ Tracker-global properties
 -------------------------
 /tracker/controllers  [integer, 0..n]
 
-Serial (type String) [MAC address]
+Serial (type String) [MAC address in the format: "xx:xx:xx:xx:xx:xx"]
 --------------------------------------------
-/move/0/serial value: 00:06:f5:ea:eb:46
+/move/0/serial
 
 Buttons (type Float)  [0.0 = released, 1.0 = pressed]
 --------------------------------------------
