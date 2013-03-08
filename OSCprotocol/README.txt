@@ -1,11 +1,8 @@
 This is a first draft of a standard for OSC transmission address patterns for the Playstation Move Controller.
 
-Tracker (type Float) [not yet implemented]
---------------------------------------------
-/tracker/0/x
-/tracker/0/y
-/tracker/0/z
-/tracker/0/r
+Tracker-global properties
+-------------------------
+/tracker/controllers  [integer, 0..n]
 
 Serial (type String) [MAC address]
 --------------------------------------------
@@ -47,4 +44,22 @@ Orientation (Float) [not available yet]
 /move/0/orientation/quat/2 
 /move/0/orientation/quat/3
 
-Note: The zero in /move/0/ and /tracker/0/ is the order number of the controllers. It then goes /move/1/, /move/2/, /move/3/, etc.
+Raw Position (type Float) [not yet implemented]
+-----------------------------------------------
+/move/0/position/raw/x
+/move/0/position/raw/y
+/move/0/position/raw/r
+
+3D Position (type Float) [not yet implemented]
+----------------------------------------------
+/move/0/position/3d/x
+/move/0/position/3d/y
+/move/0/position/3d/z
+
+Note:
+The zero in /move/0/ is the order number of the controllers.
+It then goes /move/1/, /move/2/, /move/3/, etc.
+
+The number of currently-connected controllers is broadcast
+using /tracker/controllers.
+
