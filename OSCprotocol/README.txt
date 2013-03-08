@@ -1,0 +1,50 @@
+This is a first draft of a standard for OSC transmission address patterns for the Playstation Move Controller.
+
+Tracker (type Float) [not yet implemented]
+--------------------------------------------
+/tracker/0/x
+/tracker/0/y
+/tracker/0/z
+/tracker/0/r
+
+Serial (type String) [MAC address]
+--------------------------------------------
+/move/0/serial value: 00:06:f5:ea:eb:46
+
+Buttons (type Float)  [0.0 = released, 1.0 = pressed]
+--------------------------------------------
+/move/0/buttons/square 
+/move/0/buttons/move 
+/move/0/buttons/ps 
+/move/0/buttons/select 
+/move/0/buttons/triangle 
+/move/0/buttons/circle
+/move/0/buttons/start 
+/move/0/buttons/cross 
+
+Trigger (type Float) [between 0.0 and 255.0]
+--------------------------------------------
+/move/0/buttons/triggerValue 
+
+Sensors (type Float) [between -1.0 and 1.0]
+--------------------------------------------
+/move/0/sensors/acc/x 
+/move/0/sensors/acc/y 
+/move/0/sensors/acc/z 
+
+/move/0/sensors/mag/x
+/move/0/sensors/mag/y
+/move/0/sensors/mag/z 
+
+/move/0/sensors/gyro/x
+/move/0/sensors/gyro/y
+/move/0/sensors/gyro/z 
+
+Orientation (Float) [not available yet]
+--------------------------------------------
+/move/0/orientation/quat/0
+/move/0/orientation/quat/1 
+/move/0/orientation/quat/2 
+/move/0/orientation/quat/3
+
+Note: The zero in /move/0/ and /tracker/0/ is the order number of the controllers. It then goes /move/1/, /move/2/, /move/3/, etc.
